@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Card from '@material-ui/core/Card';
 import AppleIcon from '@material-ui/icons/Apple';
 
+
 class Song extends Component {
   constructor(props) {
     super(props);
@@ -9,7 +10,7 @@ class Song extends Component {
       item: props.history.location.state.item
     };
   }
-
+  
   render() {
     return (
       <Card className="card-column">
