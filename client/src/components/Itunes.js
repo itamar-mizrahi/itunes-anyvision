@@ -1,49 +1,56 @@
 import React, { Component } from "react";
 import axios from "axios";
-
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import Card from '@material-ui/core/Card';
+import AppleIcon from '@material-ui/icons/Apple';
+import SearchIcon from '@material-ui/icons/Search';
+import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 class Itunes extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      inputValue: "",
+      TextFieldValue: "",
       results: [],
       resultsTopTen: []
     };
   }
 
-  onInputChange = e => {
-    this.setState({ inputValue: e.target.value });
+  onTextFieldChange = e => {
+    this.setState({ TextFieldValue: e.target.value });
   };
 
   onSubmit = async e => {
     e.preventDefault();
     const response = await axios.get(
-      `https://itunes.apple.com/search?term=${this.state.inputValue}&limit=25`
+      `https://itunes.apple.com/search?term=${this.state.TextFieldValue}&limit=25`
     );
     this.setState({ results: response.data.results, resultsTopTen: [] });
     axios.post("/api/songs/insertSong", {
-      songName: this.state.inputValue
+      songName: this.state.TextFieldValue
     });
   };
 
   buildResultItem = () => {
     return this.state.results.map(item => {
       return (
-        <div
+        <Card
           className="song"
           onClick={e =>
             this.props.history.push(`/itunes/${item.trackId}`, { item })
           }
         >
           {item.collectionName}
-        </div>
+        </Card>
       );
     });
   };
 
   buildResultTopTen = () => {
     return this.state.resultsTopTen.map(item => {
-      return <div className="songTopTen"> Name: {item.songName} , counts of searches: {item.songCounter}</div>;
+      return <Card className="songTopTen">
+         {item.songName} ,  {item.songCounter}
+         </Card>;
     });
   };
 
@@ -56,20 +63,25 @@ class Itunes extends Component {
 
   render() {
     return (
-      <div className="col-md-6 offset-md-3 col-sm-12">
-        <h1 style={{ marginTop: "15px" }}>Search for Songs</h1>
-        <form onSubmit={this.onSubmit} style={{ margin: "100px" }}>
-          <input placeholder="Enter here" onChange={this.onInputChange}></input>
-          <button type="submit" style={{ marginLeft: "30px" }}>
-            Search Video
-          </button>
+      <div>
+      <Card className="card-column">
+      <h1>Itunes </h1>
+      <AppleIcon className="apple" fontSize="large"/>
+      <h4> Videos And Songs</h4>
+      </Card>
+      
+      <form onSubmit={this.onSubmit}>
+        <Card className="card-row">
+          <TextField id="outlined-basic" label="Enter here" variant="outlined" placeholder="Enter here" onChange={this.onTextFieldChange}></TextField>
+          <Button disabled={!this.state.TextFieldValue} variant="contained" color="primary" type="submit"><SearchIcon/> Search</Button>
+          <Button variant="contained" color="primary" onClick={this.getTopTen}> <ThumbUpIcon/> Top 10</Button>
+        </Card>
         </form>
-        <div className="top10">
-          <button onClick={this.getTopTen}>Top 10</button>
-        </div>
-        {this.state.results.length > 0 && this.buildResultItem()}
-        {this.state.resultsTopTen.length > 0 && this.buildResultTopTen()}
-      </div>
+              <Card className="card-column">
+              {this.state.results.length > 0 && this.buildResultItem()}
+              {this.state.resultsTopTen.length > 0 && this.buildResultTopTen()}
+              </Card>
+       </div>
     );
   }
 }

@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import Card from '@material-ui/core/Card';
+import AppleIcon from '@material-ui/icons/Apple';
 
 class Song extends Component {
   constructor(props) {
@@ -10,19 +12,22 @@ class Song extends Component {
 
   render() {
     return (
-      <div className="col-md-6 offset-md-3 col-sm-12">
+      <Card className="card-column">
         <h1>{this.state.item.collectionName}</h1>
+        <AppleIcon fontSize="large"/>
         {this.state.item.previewUrl ? (
+          <Card className="card-row">
           <iframe
             title="aa"
             src={this.state.item.previewUrl}
             height="200"
             width="300"
           ></iframe>
+          </Card>
         ) : (
           "No prevURL found"
         )}
-      </div>
+      </Card>
     );
   }
 }
