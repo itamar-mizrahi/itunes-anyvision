@@ -15,13 +15,13 @@ class Song extends Component {
       <Card className="card-column">
         <h1>{this.state.item.collectionName}</h1>
         <AppleIcon fontSize="large"/>
-        {this.state.item.previewUrl ? (
+        {this.state.item.previewUrl?  (
           <Card className="card-row">
           <iframe
-            title="aa"
+            title="itunes"
             src={this.state.item.previewUrl}
-            height="200"
-            width="300"
+            height="600"
+            width="1400"
           ></iframe>
           </Card>
         ) : (
