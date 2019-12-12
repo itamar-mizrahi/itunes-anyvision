@@ -6,6 +6,7 @@ import Card from '@material-ui/core/Card';
 import AppleIcon from '@material-ui/icons/Apple';
 import SearchIcon from '@material-ui/icons/Search';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
+
 class Itunes extends Component {
   constructor(props) {
     super(props);
@@ -40,24 +41,26 @@ class Itunes extends Component {
             this.props.history.push(`/itunes/${item.trackId}`, { item })
           }
         >
-          {item.collectionName}
+          {item.collectionName},{item.artistName}
         </Card>
       );
     });
   };
 
   buildResultTopTen = () => {
-    return this.state.resultsTopTen.map(item => {
+    return (
+     this.state.resultsTopTen.map(item => {
       return <Card className="songTopTen">
-         {item.songName} ,  {item.songCounter}
+         {item.songName}, 
+         {item.songCounter}
          </Card>;
-    });
+    }))
   };
+    
 
   getTopTen = async e => {
     e.preventDefault();
     const response = await axios.get("/api/songs/top10");
-    console.log(response.data.list)
     this.setState({ resultsTopTen: response.data.list, results: [] });
   };
 
