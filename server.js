@@ -4,7 +4,6 @@ var http = require("http").Server(app);
 const path = require("path");
 const mongoose = require("mongoose");
 const bodyparser = require("body-parser");
-
 const keys = require("./config/keys/keys");
 //Body parser middleware
 app.use(bodyparser.urlencoded({ extended: false }));
@@ -14,9 +13,10 @@ const songs = require("./routes/api/songs");
 // Use Routes
 app.use("/api/songs", songs);
 
+
 // Connect to mongo
 mongoose.connect(
-  keys.mongoURI,
+  'mongodb+srv://theitamarmizrahi:3519902786a@cluster0-iapps.mongodb.net/itunes?retryWrites=true&w=majority',
   {
     useNewUrlParser: true,
     useCreateIndex: true
