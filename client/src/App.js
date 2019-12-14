@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Itunes from "./components/Itunes";
-import Song from "./components/song";
+import Song from "./components/Song";
 import "./components/main.css";
 
 

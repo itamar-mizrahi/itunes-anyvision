@@ -15,7 +15,7 @@ class Song extends Component {
   render() {
     return (
       <Card className="card-column">
-        <h1>{this.state.item.collectionName}</h1>
+        <h1>{this.state.item.collectionName} by {this.state.item.artistName}</h1>
         <AppleIcon fontSize="large"/>
         {this.state.item.previewUrl?  (
           <Card className="card-column">
