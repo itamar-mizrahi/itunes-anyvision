@@ -23,9 +23,7 @@ router.post("/insertSong", (req, res) => {
 });
 
 router.get("/top10", (req, res) => {
-  Song.find({}, [], { limit: 10, sort: { songCounter: -1 } }).then(function(
-    songs
-  ) {
+  Song.find({}, [], { limit: 10, sort: { songCounter: -1 } }).then(songs=>{
     res.status(200).json({ list: songs });
   });
 });
