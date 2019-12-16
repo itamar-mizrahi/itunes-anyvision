@@ -12,7 +12,8 @@ app.use("/api/songs", songs);
 mongoose.connect(key,
   {
     useNewUrlParser: true,
-    useCreateIndex: true
+    useCreateIndex: true,
+    useUnifiedTopology: true
   },
   function(err) {
     if (err) {
