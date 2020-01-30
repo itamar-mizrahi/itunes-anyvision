@@ -19,10 +19,14 @@ mongoose.connect(key,
     if (err) {
       throw err;
     }});
+    
+    if (process.env.NODE_ENV==='production'){
+      app.use(express.static('client/build'));
+    }
 
     const PORT = process.env.PORT || 5000;
 
-    const server = app.listen(PORT, () => {
+    const server = app.listen(PORT,process.env.HOST, () => {
       console.log("server is running on port", server.address().port);
     });
 
