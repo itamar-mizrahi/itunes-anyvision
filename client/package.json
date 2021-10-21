@@ -6,6 +6,8 @@
     "@material-ui/core": "^4.12.3",
     "@material-ui/icons": "^4.11.2",
     "axios": "^0.19.2",
+    "heroku": "^7.59.0",
+    "heroku-cli": "^7.0.9",
     "node-sass": "^4.13.0",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
