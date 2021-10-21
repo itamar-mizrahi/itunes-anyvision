@@ -5,9 +5,13 @@
   "dependencies": {
     "@material-ui/core": "^4.12.3",
     "@material-ui/icons": "^4.11.2",
+<<<<<<< HEAD
     "axios": "^0.19.2",
     "heroku": "^7.59.0",
     "heroku-cli": "^7.0.9",
+=======
+    "axios": "^0.21.2",
+>>>>>>> c62485e755ab4ba8518540842fefcb9dc08b362c
     "node-sass": "^4.13.0",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
