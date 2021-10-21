@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "project with itunes api, react, mongo, node",
   "main": "server.js",
+  "homepage" : "http://itamar-mizrahi.github.io/itunes-anyvision",
   "scripts": {
     "start": "npm run dev",
     "server": "nodemon server",
