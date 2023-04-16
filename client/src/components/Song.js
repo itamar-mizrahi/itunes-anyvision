@@ -1,4 +1,8 @@
 import React, { Component } from "react";
+import Card from '@material-ui/core/Card';
+import AppleIcon from '@material-ui/icons/Apple';
+import { Button } from "@material-ui/core";
+
 
 class Song extends Component {
   constructor(props) {
@@ -7,22 +11,28 @@ class Song extends Component {
       item: props.history.location.state.item
     };
   }
-
+  
   render() {
     return (
-      <div className="col-md-6 offset-md-3 col-sm-12">
-        <h1>{this.state.item.collectionName}</h1>
-        {this.state.item.previewUrl ? (
+      <Card className="card-column">
+        <h1>{this.state.item.collectionName} by {this.state.item.artistName}</h1>
+        <AppleIcon fontSize="large"/>
+        {this.state.item.previewUrl?  (
+          <Card className="card-column">
           <iframe
-            title="aa"
+            title="itunes"
             src={this.state.item.previewUrl}
-            height="200"
-            width="300"
+            height="600"
+            width="1400"
           ></iframe>
+          <Button variant="contained" color="primary" onClick={e =>
+            this.props.history.push(`/`)}>back</Button>
+          </Card>
+          
         ) : (
           "No prevURL found"
         )}
-      </div>
+      </Card>
     );
   }
 }

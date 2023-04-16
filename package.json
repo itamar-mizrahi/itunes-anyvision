@@ -1,10 +1,11 @@
 {
-  "name": "nextbigthing",
+  "name": "rec-ex-av",
   "version": "1.0.0",
-  "description": "Next big thing",
+  "description": "project with itunes api, react, mongo, node",
   "main": "server.js",
+  "homepage" : "http://itamar-mizrahi.github.io/itunes-anyvision",
   "scripts": {
-    "start": "node server",
+    "start": "npm run dev",
     "server": "nodemon server",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
@@ -14,12 +15,12 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.17.1",
-    "mongoose": "^5.6.0",
+    "mongoose": "^5.8.1",
     "react-router-dom": "^5.1.2",
-    "socket.io": "^2.3.0"
+    "socket.io": "^2.4.0"
   },
   "devDependencies": {
-    "concurrently": "^4.1.0",
-    "nodemon": "^1.19.1"
+    "concurrently": "^4.1.2",
+    "nodemon": "^1.19.4"
   }
 }

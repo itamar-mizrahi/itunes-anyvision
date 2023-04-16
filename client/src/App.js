@@ -2,7 +2,8 @@ import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Itunes from "./components/Itunes";
 import Song from "./components/Song";
-import "./components/main.scss";
+import "./components/main.css";
+
 
 export const Context = React.createContext();
 
